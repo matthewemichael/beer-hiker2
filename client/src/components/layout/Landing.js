@@ -1,25 +1,35 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import NavBarOut from "../NavBarOut/NavBarOut";
 import "./Landing.css";
 import 'bulma/css/bulma.css';
-import logo from '../../images/BeerHikerLogo2.jpg';
+// import logo from '../../images/BeerHikerLogo2.jpg';
 import image from '../../images/beerSamples.jpg';
 
 
 class Landing extends Component {
 
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
   
 
   render() {
+
     return (
       <div className="container">
-        <NavBarOut />
+        <NavBarOut
+        />
         <br />
         <div className="start">
           <div className="columns">
             <div className="column is-three-fifths">
-              <p>Please Log In or Register For an Account</p>
+              <p>Log In or Register For an Account</p>
             </div>
             <div className="column is-one-fifths">
               <Link
@@ -52,15 +62,22 @@ class Landing extends Component {
         </div>
         <br />
         <div className="landingBackground">
-          <img src={image} className="landingBackground" alt='beer image' />
-          <figure className="image is-4by3">
-            <iframe className="has-ratio" width="640" height="480" img src="../../images/beerSamples.jpg" frameBorder="0"
-              allowFullScreen></iframe>
-          </figure>
+          <img src={image} className="landingBackground" alt='beer' />
+     
         </div>
       </div>
     );
   }
 }
 
-export default Landing;
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default (connect)(mapStateToProps)(Landing);

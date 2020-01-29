@@ -56,10 +56,10 @@ class Login extends Component {
     return (
       <div className="background">
         <NavBarOut />
-        <section class="hero col s12 center-align">
-          <div class="hero-head">
-            <div class="container">
-              <section class="hero is-large has-sm-img"> 
+        <section className="hero col s12 center-align">
+          <div className="hero-head">
+            <div className="container">
+              <section className="hero is-large has-sm-img"> 
               </section>
             </div>
           </div>

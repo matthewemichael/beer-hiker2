@@ -36,14 +36,14 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div class="background">
+      <div className="background">
         <NavBarDash />
-        <section class="hero col s12 center-align">
-        <div class="hero-head">
-          <div class="container">
-          <section class="hero is-large has-sm-img"> 
-        <div class="hero-body"> 
-          <div class="container has-text-centered"> 
+        <section className="hero col s12 center-align">
+        <div className="hero-head">
+          <div className="container">
+          <section className="hero is-large has-sm-img"> 
+        <div className="hero-body"> 
+          <div className="container has-text-centered"> 
           <div className="container valign-wrapper">
           </div>
             </div> 
